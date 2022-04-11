@@ -1,6 +1,7 @@
 ﻿using KutyakozmetikaApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,14 @@ namespace KutyakozmetikaApi.Controllers
         {
             context = kutyakozmetikaContext;
         }
+
+        [HttpGet]
+    
+
+        public async Task<IActionResult> GetSzolgaltatasok()
+        {
+            return Ok(await context.szolgaltatas.ToListAsync());
+        }
+
     }
 }

@@ -29,7 +29,7 @@ namespace KutyakozmetikaApi
             services.AddDbContext<kutyakozmetikaContext>(
                  options =>
                  // Kiolvassa az appsettins.json fájlból a kapcsolati értéket
-                 options.UseMySql(Configuration.GetConnectionString("KutyakDB"),
+                 options.UseMySql(Configuration.GetConnectionString("KutyakozmetikaDB"),
                  ServerVersion.Parse("10.4.6-mariadb")));
             services.AddControllers();
         }
