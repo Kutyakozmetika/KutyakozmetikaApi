@@ -31,13 +31,22 @@ namespace KutyakozmetikaApi
                  // Kiolvassa az appsettins.json fájlból a kapcsolati értéket
                  options.UseMySql(Configuration.GetConnectionString("KutyakozmetikaDB"),
                  ServerVersion.Parse("10.4.6-mariadb")));
-
+#if DEBUG
             services.AddCors(options => options.AddDefaultPolicy(c =>
             {
                 c.AllowAnyMethod()
                  .AllowAnyOrigin()
                  .AllowAnyHeader();
             }));
+#else
+            services.AddCors(options => options.AddDefaultPolicy(c =>
+            {
+                c.AllowAnyMethod()
+                 .AllowAnyOrigin()
+                 .AllowAnyHeader();
+            }));
+
+#endif
 
             services.AddControllers();
         }
