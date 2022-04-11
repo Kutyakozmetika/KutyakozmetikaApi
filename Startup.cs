@@ -1,6 +1,8 @@
+using KutyakozmetikaApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +26,11 @@ namespace KutyakozmetikaApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<kutyakozmetikaContext>(
+                 options =>
+                 // Kiolvassa az appsettins.json fájlból a kapcsolati értéket
+                 options.UseMySql(Configuration.GetConnectionString("KutyakDB"),
+                 ServerVersion.Parse("10.4.6-mariadb")));
             services.AddControllers();
         }
 
