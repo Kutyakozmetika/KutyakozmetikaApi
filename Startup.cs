@@ -31,6 +31,14 @@ namespace KutyakozmetikaApi
                  // Kiolvassa az appsettins.json fájlból a kapcsolati értéket
                  options.UseMySql(Configuration.GetConnectionString("KutyakozmetikaDB"),
                  ServerVersion.Parse("10.4.6-mariadb")));
+
+            services.AddCors(options => options.AddDefaultPolicy(c =>
+            {
+                c.AllowAnyMethod()
+                 .AllowAnyOrigin()
+                 .AllowAnyHeader();
+            }));
+
             services.AddControllers();
         }
 
@@ -41,6 +49,8 @@ namespace KutyakozmetikaApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors();
 
             app.UseRouting();
 

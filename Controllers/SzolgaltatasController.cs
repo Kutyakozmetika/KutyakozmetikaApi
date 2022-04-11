@@ -22,8 +22,6 @@ namespace KutyakozmetikaApi.Controllers
         }
 
         [HttpGet]
-    
-
         public async Task<IActionResult> GetSzolgaltatasok()
         {
             return Ok(await context.szolgaltatas.ToListAsync());
