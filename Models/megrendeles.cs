@@ -20,5 +20,8 @@ namespace KutyakozmetikaApi.Models
         [Required]
         [StringLength(255)]
         public string felhasznalonev { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string szolgaltatasNev { get; set; }
     }
 }

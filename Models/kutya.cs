@@ -8,25 +8,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KutyakozmetikaApi.Models
 {
-    [Index(nameof(felhasznaloID), Name = "felhasznaloID")]
     public partial class kutya
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int kutyaID { get; set; }
         [Required]
-        [MaxLength(1)]
-        public byte[] agresszivE { get; set; }
-        [Column(TypeName = "tinyint(4)")]
-        public sbyte eletkor { get; set; }
+        [StringLength(255)]
+        public string agresszivE { get; set; }
         [Required]
-        [StringLength(100)]
+        [StringLength(255)]
+        public string eletkor { get; set; }
+        [Required]
+        [StringLength(255)]
         public string fajta { get; set; }
-        [Column(TypeName = "int(11)")]
-        public int felhasznaloID { get; set; }
-
-        [ForeignKey(nameof(felhasznaloID))]
-        [InverseProperty("kutya")]
-        public virtual felhasznalo felhasznalo { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string tulajNev { get; set; }
     }
 }

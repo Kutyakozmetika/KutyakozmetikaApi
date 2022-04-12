@@ -18,8 +18,6 @@ namespace KutyakozmetikaApi.Models
         }
 
         public virtual DbSet<felhasznalo> felhasznalo { get; set; }
-        public virtual DbSet<kezeles> kezeles { get; set; }
-        public virtual DbSet<kozmetikus> kozmetikus { get; set; }
         public virtual DbSet<kutya> kutya { get; set; }
         public virtual DbSet<megrendeles> megrendeles { get; set; }
         public virtual DbSet<szolgaltatas> szolgaltatas { get; set; }
@@ -38,30 +36,9 @@ namespace KutyakozmetikaApi.Models
             modelBuilder.HasCharSet("utf8")
                 .UseCollation("utf8_hungarian_ci");
 
-            modelBuilder.Entity<kezeles>(entity =>
+            modelBuilder.Entity<szolgaltatas>(entity =>
             {
-                entity.HasOne(d => d.kozmetikus)
-                    .WithMany()
-                    .HasForeignKey(d => d.kozmetikusID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Kezeles_ibfk_1");
-
-                entity.HasOne(d => d.szolgaltatas)
-                    .WithMany()
-                    .HasForeignKey(d => d.szolgaltatasID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Kezeles_ibfk_2");
-            });
-
-            modelBuilder.Entity<kutya>(entity =>
-            {
-                entity.Property(e => e.agresszivE).IsFixedLength(true);
-
-                entity.HasOne(d => d.felhasznalo)
-                    .WithMany(p => p.kutya)
-                    .HasForeignKey(d => d.felhasznaloID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Kutya_ibfk_1");
+                entity.Property(e => e.szolgaltatasID).ValueGeneratedNever();
             });
 
             OnModelCreatingPartial(modelBuilder);

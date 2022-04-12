@@ -18,7 +18,5 @@ namespace KutyakozmetikaApi.Models
         public string szolgaltatasNev { get; set; }
         [Column(TypeName = "int(11)")]
         public int idotartam { get; set; }
-        [Column(TypeName = "int(11)")]
-        public int ar { get; set; }
     }
 }

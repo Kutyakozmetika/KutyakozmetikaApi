@@ -1,3 +1,4 @@
+
 using KutyakozmetikaApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,7 @@ namespace KutyakozmetikaApi
             }));
 
 #endif
+
 
             services.AddControllers();
         }

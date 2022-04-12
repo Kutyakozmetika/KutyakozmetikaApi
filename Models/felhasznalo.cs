@@ -10,11 +10,6 @@ namespace KutyakozmetikaApi.Models
 {
     public partial class felhasznalo
     {
-        public felhasznalo()
-        {
-            kutya = new HashSet<kutya>();
-        }
-
         [Key]
         [Column(TypeName = "int(11)")]
         public int felhasznaloID { get; set; }
@@ -36,8 +31,5 @@ namespace KutyakozmetikaApi.Models
         [Required]
         [StringLength(100)]
         public string jelszo { get; set; }
-
-        [InverseProperty("felhasznalo")]
-        public virtual ICollection<kutya> kutya { get; set; }
     }
 }
