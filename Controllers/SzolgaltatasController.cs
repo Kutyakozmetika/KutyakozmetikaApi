@@ -1,4 +1,5 @@
 ﻿
+using KutyakozmetikaApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,9 @@ namespace KutyakozmetikaApi.Controllers
     public class SzolgaltatasController : ControllerBase
     {
 
-        //private kutyakozmetikaContext context;
+        private kutyakozmetikaContext context;
 
-        /*public SzolgaltatasController(kutyakozmetikaContext kutyakozmetikaContext)
+        public SzolgaltatasController(kutyakozmetikaContext kutyakozmetikaContext)
         {
             context = kutyakozmetikaContext;
         }
@@ -26,6 +27,6 @@ namespace KutyakozmetikaApi.Controllers
         {
             return Ok(await context.szolgaltatas.ToListAsync());
         }
-        */
+        
     }
 }
